@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Sketching</title>
+</head>
+<body>
+    <h1>Image Sketching</h1>
+
+    <form action="{{ url_for('sketch') }}" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <input type="submit" value="Upload">
+    </form>
+
+    {% if org_img_name and sketch_img_name %}
+        <h2>Original Image:</h2>
+        <img src="{{ url_for('static', filename=org_img_name) }}" alt="Original Image" width="400">
+
+        <h2>Sketch Image:</h2>
+        <img src="{{ url_for('static', filename=sketch_img_name) }}" alt="Sketch Image" width="400">
+    {% endif %}
+</body>
+</html>
